@@ -1,14 +1,11 @@
-# Simple Server Echo
+# Survival in Line
 
-Sample echo-bot using [wsgiref.simple_server](https://docs.python.org/3/library/wsgiref.html)
-
-## Getting started
-
+```sh
+$ mkdir lib
+$ pip install -t lib flask
+$ pip install -t lib line-bot-sdk
 ```
-$ export LINE_CHANNEL_SECRET=YOUR_LINE_CHANNEL_SECRET
-$ export LINE_CHANNEL_ACCESS_TOKEN=YOUR_LINE_CHANNEL_ACCESS_TOKEN
 
-$ pip install -r requirements.txt
-
-$ python app.py
+```sh
+$ appcfg.py update .
 ```
