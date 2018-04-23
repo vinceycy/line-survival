@@ -62,33 +62,38 @@ def handle_message(event):
     keyword=event.message.text
     if keyword == "平軒" or keyword == "軒哥" or keyword == "蕭平軒":
 
-        now=datetime.datetime.now()
+        # now=datetime.datetime.now()
 
-        hours=now.hours
-        if hours > 9 and hours < 12:
-            foodTime=datetime.datetime(now.year, now.month, now.day, 12, 00)
-            temp=foodTime-now
-            timeList=str(temp).split(".")[0].split(":")
-            result='報告軒哥，離午餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
-        elif hours >= 12 and hours < 13:
-            result='報告軒哥，吃晚午餐該睡囉～'
-        elif hours >= 13 and hours < 18:
-            foodTime=datetime.datetime(now.year, now.month, now.day, 18, 00)
-            temp=foodTime-now
-            timeList=str(temp).split(".")[0].split(":")
-            result='報告軒哥，離晚餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
-        elif hours >=18 and hours < 19:
-            result='報告軒哥，吃完晚餐該回家陪女兒囉～'
-        elif hours >= 19 and hours < 23:
-            result='噓～軒哥在家很安靜的'
-        elif hours >= 23 or (hours >= 0 and hours < 7):
-            result='幹，快睡'
-        elif hours >=7 and hours < 9:
-            result='別打擾軒哥吃早餐'
-        else
-            result='軒哥好！'
+        # hours=now.hours
+        # if hours > 9 and hours < 12:
+        #     foodTime=datetime.datetime(now.year, now.month, now.day, 12, 00)
+        #     temp=foodTime-now
+        #     timeList=str(temp).split(".")[0].split(":")
+        #     result='報告軒哥，離午餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
+        # elif hours >= 12 and hours < 13:
+        #     result='報告軒哥，吃晚午餐該睡囉～'
+        # elif hours >= 13 and hours < 18:
+        #     foodTime=datetime.datetime(now.year, now.month, now.day, 18, 00)
+        #     temp=foodTime-now
+        #     timeList=str(temp).split(".")[0].split(":")
+        #     result='報告軒哥，離晚餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
+        # elif hours >=18 and hours < 19:
+        #     result='報告軒哥，吃完晚餐該回家陪女兒囉～'
+        # elif hours >= 19 and hours < 23:
+        #     result='噓～軒哥在家很安靜的'
+        # elif hours >= 23 or (hours >= 0 and hours < 7):
+        #     result='幹，快睡'
+        # elif hours >=7 and hours < 9:
+        #     result='別打擾軒哥吃早餐'
+        # else
+        #     result='軒哥好！'
 
-        line_bot_api.reply_message(
+        result='軒哥好！'
+
+    else
+        result='錯囉～'
+
+    line_bot_api.reply_message(
             event.reply_token,
             TextSendMessage(text=result))
 
