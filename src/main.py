@@ -59,7 +59,7 @@ def worker():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
-    keyword=unicode(event.message.text, "utf-8")
+    keyword=event.message.text.encode("utf-8")
     if keyword == "平軒" or keyword == "軒哥" or keyword == "蕭平軒":
 
         now=datetime.datetime.now()
