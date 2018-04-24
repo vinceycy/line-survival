@@ -18,7 +18,7 @@ from linebot.models import (
 )
 
 import datetime
-
+import pytz
 import config
 
 app = Flask(__name__)
@@ -62,7 +62,8 @@ def handle_message(event):
     keyword=event.message.text.encode("utf-8")
     if keyword == "平軒" or keyword == "軒哥" or keyword == "蕭平軒":
 
-        now=datetime.datetime.now()
+        utcnow=datetime.datetime.utcnow()
+        now=utcnow.replace(tzinfo=pytz.UTC).astimezone(pytz.timezone("Asia/Taipei"))
 
         hours=now.hour
         if hours > 9 and hours < 12:
