@@ -64,7 +64,7 @@ def handle_message(event):
 
         now=datetime.datetime.now()
 
-        hours=now.hours
+        hours=now.hour
         if hours > 9 and hours < 12:
             foodTime=datetime.datetime(now.year, now.month, now.day, 12, 00)
             temp=foodTime-now
@@ -88,14 +88,9 @@ def handle_message(event):
         else:
             result='軒哥好！'
 
-        result='軒哥好！'
-
-    else:
-        result='錯囉～'
-
-    line_bot_api.reply_message(
-            event.reply_token,
-            TextSendMessage(text=result))
+        line_bot_api.reply_message(
+                event.reply_token,
+                TextSendMessage(text=result))
 
 
 if __name__ == "__main__":
