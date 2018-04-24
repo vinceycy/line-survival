@@ -67,14 +67,14 @@ def handle_message(event):
 
         hours=now.hour
         if hours > 9 and hours < 12:
-            foodTime=datetime.datetime(now.year, now.month, now.day, 12, 00).replace(tzinfo=pytz.UTC)
+            foodTime=datetime.datetime(now.year, now.month, now.day, 12-8, 00).replace(tzinfo=pytz.UTC).astimezone(pytz.timezone("Asia/Taipei"))
             temp=foodTime-now
             timeList=str(temp).split(".")[0].split(":")
             result='報告軒哥，離午餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
         elif hours >= 12 and hours < 13:
             result='報告軒哥，吃晚午餐該睡囉～'
         elif hours >= 13 and hours < 18:
-            foodTime=datetime.datetime(now.year, now.month, now.day, 18, 00).replace(tzinfo=pytz.UTC)
+            foodTime=datetime.datetime(now.year, now.month, now.day, 18-8, 00).replace(tzinfo=pytz.UTC).astimezone(pytz.timezone("Asia/Taipei"))
             temp=foodTime-now
             timeList=str(temp).split(".")[0].split(":")
             result='報告軒哥，離晚餐時間還有 ' + timeList[0] + ' 小時 ' + timeList[1] + ' 分又 ' + timeList[2] + ' 秒'
