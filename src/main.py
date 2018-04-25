@@ -59,13 +59,12 @@ def worker():
 
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
+    result=''
     keyword=event.message.text.encode("utf-8")
     josh=event.source.user_id.encode("utf-8")
-    if keyword == "平軒" or keyword == "軒哥" or keyword == "蕭平軒" or josh == config.NAME_JOSH :
-
+    if keyword == "平軒" or keyword == "軒哥" or keyword == "蕭平軒" or keyword == "@蕭平軒" or josh == config.NAME_JOSH :
         utcnow=datetime.datetime.utcnow()
         now=utcnow.replace(tzinfo=pytz.UTC).astimezone(pytz.timezone("Asia/Taipei"))
-
         hours=now.hour
         if hours > 9 and hours < 12:
             foodTime=datetime.datetime(now.year, now.month, now.day, 12-8, 00).replace(tzinfo=pytz.UTC).astimezone(pytz.timezone("Asia/Taipei"))
@@ -89,6 +88,8 @@ def handle_message(event):
             result='別打擾軒哥吃早餐'
         else:
             result='軒哥好！'
+    elif '小草' in keyword:
+        result='你好～我是軒哥的專屬OP優～'
 
         line_bot_api.reply_message(
                 event.reply_token,
